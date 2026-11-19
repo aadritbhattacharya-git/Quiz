@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WordQuest Contest</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <button class="brand" id="homeBtn" type="button" aria-label="Go to contest home">
+        <span class="brand-mark">WQ</span>
+        <span>WordQuest</span>
+      </button>
+      <nav class="top-actions" aria-label="Contest navigation">
+        <button class="icon-button" id="leaderboardBtn" type="button" title="Leaderboard">
+          <span aria-hidden="true">🏆</span>
+          <span class="button-label">Leaderboard</span>
+        </button>
+        <button class="icon-button" id="adminBtn" type="button" title="Admin">
+          <span aria-hidden="true">⚙</span>
+          <span class="button-label">Admin</span>
+        </button>
+      </nav>
+    </header>
+
+    <section id="homeView" class="view active">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Live contest</p>
+          <h1>One word.<br><span>Endless possibilities.</span></h1>
+          <p class="hero-copy">Test your vocabulary across three rounds. Answer with exactly one word and race the clock.</p>
+          <form id="joinForm" class="join-card">
+            <label for="playerName">Contestant name</label>
+            <div class="join-row">
+              <input id="playerName" maxlength="24" placeholder="Enter your name" autocomplete="name" required>
+              <button class="primary-button" type="submit">Join contest <span aria-hidden="true">→</span></button>
+            </div>
+          </form>
+        </div>
+        <aside class="contest-card">
+          <div class="contest-card-head">
+            <span class="live-pill"><i></i> Live</span>
+            <span id="totalPlayers">128 joined</span>
+          </div>
+          <div class="round-preview">
+            <p>Tonight's contest</p>
+            <h2>Word Warriors</h2>
+            <div class="round-list" id="roundPreview"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="gameView" class="view">
+      <div class="game-header">
+        <div>
+          <p class="eyebrow" id="roundLabel">Round 1</p>
+          <h2 id="roundTitle">Quick Fire</h2>
+        </div>
+        <div class="score-box"><span>Score</span><strong id="scoreValue">0</strong></div>
+      </div>
+      <div class="progress-track"><div id="progressBar"></div></div>
+      <div class="question-grid">
+        <article class="question-card">
+          <div class="question-meta">
+            <span id="questionCounter">Question 1 of 5</span>
+            <span class="timer" id="timer">30</span>
+          </div>
+          <h3 id="questionText">Loading question...</h3>
+          <form id="answerForm" class="answer-form">
+            <label for="answerInput">Your one-word answer</label>
+            <input id="answerInput" maxlength="30" placeholder="Type one word..." autocomplete="off">
+            <p class="answer-error" id="answerError" role="alert"></p>
+            <button class="primary-button" type="submit">Submit answer</button>
+          </form>
+        </article>
+        <aside class="round-status">
+          <p>Round standings</p>
+          <div id="miniLeaderboard"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="leaderboardView" class="view">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Live results</p>
+          <h2>Leaderboard</h2>
+        </div>
+        <button class="secondary-button" id="backHomeBtn" type="button">Back to contest</button>
+      </div>
+      <div class="leaderboard-card">
+        <div class="leaderboard-head"><span>Rank</span><span>Contestant</span><span>Score</span></div>
+        <div id="leaderboardRows"></div>
+      </div>
+    </section>
+
+    <section id="adminView" class="view">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Contest manager</p>
+          <h2>Admin setup</h2>
+        </div>
+        <button class="secondary-button" id="adminBackBtn" type="button">Back to contest</button>
+      </div>
+      <div class="admin-grid">
+        <article class="admin-card">
+          <h3>Upload question bank</h3>
+          <p>Upload a <strong>.txt</strong> question bank. Use plain text lines in this format:</p>
+          <code>Question | answer | round 1</code>
+          <input id="questionFile" type="file" accept=".txt,text/plain">
+          <p class="admin-note" id="uploadStatus">Your uploaded questions replace the sample bank.</p>
+        </article>
+        <article class="admin-card">
+          <h3>Contest status</h3>
+          <div class="status-line"><span>Rounds</span><strong id="adminRoundCount">3</strong></div>
+          <div class="status-line"><span>Questions</span><strong id="adminQuestionCount">15</strong></div>
+          <button class="danger-button" id="resetSampleBtn" type="button">Reset sample data</button>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

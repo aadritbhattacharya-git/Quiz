@@ -1,0 +1,7 @@
+{
+  "git.enabled": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.defaultBranchName": "main",
+  "github.copilot.gitUseWeightedSummary": true
+}
